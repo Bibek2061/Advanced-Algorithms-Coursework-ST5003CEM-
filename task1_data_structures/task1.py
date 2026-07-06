@@ -73,9 +73,7 @@ class BSTNode:
         self.right = None
 
 
-# ============================================================
 # BINARY SEARCH TREE
-# ============================================================
 
 class BinarySearchTree:
 
@@ -208,9 +206,8 @@ class AVLNode:
         self.height = 1
 
 
-# ============================================================
+
 # AVL TREE
-# ============================================================
 
 class AVLTree:
 
@@ -312,9 +309,8 @@ class AVLTree:
             self._inorder(node.right, data)
 
 
-# ============================================================
+
 # MIN HEAP
-# ============================================================
 
 class MinHeap:
 
@@ -336,12 +332,17 @@ class MinHeap:
 
     def size(self):
         return len(self.heap)
+    
 
 
-# ============================================================
+
+
+
+
+
+    
+
 # HASH TABLE (CHAINING)
-# ============================================================
-
 class HashTable:
 
     def __init__(self, size=1009):
@@ -396,149 +397,5 @@ class HashTable:
 
 
 
-
-   # ============================================================
-# PERFORMANCE TESTING
-# ============================================================
-
-def measure_insert_time(structure, cities):
-    start = time.perf_counter()
-
-    for city in cities:
-        structure.insert(city)
-
-    end = time.perf_counter()
-    return end - start
-
-
-def measure_search_time(structure, city_names):
-    start = time.perf_counter()
-
-    for name in city_names:
-        structure.search(name)
-
-    end = time.perf_counter()
-    return end - start
-
-
-def run_performance_tests():
-    dataset_sizes = [100, 1000, 10000]
-
-    results = {
-        "BST Insert": [],
-        "AVL Insert": [],
-        "Hash Insert": [],
-        "Heap Insert": [],
-        "BST Search": [],
-        "AVL Search": [],
-        "Hash Search": []
-    }
-
-    for size in dataset_sizes:
-        cities = generate_dataset(size)
-        search_names = [f"City_{random.randint(0, size - 1)}" for _ in range(100)]
-
-        bst = BinarySearchTree()
-        avl = AVLTree()
-        hash_table = HashTable(size * 2)
-        heap = MinHeap()
-
-        results["BST Insert"].append(measure_insert_time(bst, cities))
-        results["AVL Insert"].append(measure_insert_time(avl, cities))
-        results["Hash Insert"].append(measure_insert_time(hash_table, cities))
-        results["Heap Insert"].append(measure_insert_time(heap, cities))
-
-        results["BST Search"].append(measure_search_time(bst, search_names))
-        results["AVL Search"].append(measure_search_time(avl, search_names))
-        results["Hash Search"].append(measure_search_time(hash_table, search_names))
-
-    return dataset_sizes, results
-
-
-# ============================================================
-# GRAPH GENERATION
-# ============================================================
-
-def create_runtime_graph(dataset_sizes, results):
-    plt.figure(figsize=(11, 6))
-
-    for label, times in results.items():
-        plt.plot(dataset_sizes, times, marker="o", label=label)
-
-    plt.xlabel("Dataset Size")
-    plt.ylabel("Wall-clock Time (seconds)")
-    plt.title("Task 1 Runtime Comparison of Data Structures")
-    plt.legend()
-    plt.grid(True)
-    plt.tight_layout()
-
-    plt.savefig("graphs/task1_runtime_comparison.png")
-    print("\nRuntime graph saved at: graphs/task1_runtime_comparison.png")
-
-
-# ============================================================
-# DEMONSTRATION
-# ============================================================
-
-def basic_demo():
-    print("\n==============================")
-    print("TASK 1 DATA STRUCTURES DEMO")
-    print("==============================")
-
-    cities = generate_dataset(10)
-
-    bst = BinarySearchTree()
-    avl = AVLTree()
-    heap = MinHeap()
-    hash_table = HashTable()
-
-    for city in cities:
-        bst.insert(city)
-        avl.insert(city)
-        heap.insert(city)
-        hash_table.insert(city)
-
-    print("\nBST Inorder Traversal:")
-    for city in bst.inorder():
-        print(city)
-
-    print("\nAVL Inorder Traversal:")
-    for city in avl.inorder():
-        print(city)
-
-    print("\nNearest City from Min Heap:")
-    print(heap.peek())
-
-    print("\nFast Lookup from Hash Table:")
-    print(hash_table.search("City_5"))
-
-
-def print_results_table(dataset_sizes, results):
-    print("\n==============================")
-    print("PERFORMANCE RESULTS")
-    print("==============================")
-
-    header = "Operation".ljust(18)
-    for size in dataset_sizes:
-        header += f"{size}".rjust(15)
-    print(header)
-
-    print("-" * len(header))
-
-    for operation, times in results.items():
-        row = operation.ljust(18)
-        for t in times:
-            row += f"{t:.8f}".rjust(15)
-        print(row)
-
-
-# ============================================================
-# MAIN PROGRAM
-# ============================================================
-
-if __name__ == "__main__":
-    basic_demo()
-
-    dataset_sizes, results = run_performance_tests()
-    print_results_table(dataset_sizes, results)
-    create_runtime_graph(dataset_sizes, results) 
+   
+    
