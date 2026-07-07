@@ -37,9 +37,8 @@ def matrix_chain_order(dimensions):
     return dp[1][n - 1]
 
 
-# ============================================================
 # TEST MATRIX CHAIN
-# ============================================================
+
 
 dimensions = [40, 20, 30, 10, 30]
 
@@ -50,10 +49,10 @@ print("MATRIX CHAIN MULTIPLICATION")
 print("==============================")
 print("Matrix Dimensions :", dimensions)
 print("Minimum Multiplications :", minimum_cost)
-# ============================================================
+
 # MINIMUM NUMBER OF PLATFORMS
 # Greedy Algorithm
-# ============================================================
+
 
 def minimum_platforms(arrival, departure):
 
@@ -81,10 +80,9 @@ def minimum_platforms(arrival, departure):
 
     return maximum_platforms
 
-# ============================================================
 # HAMILTONIAN CYCLE
 # Backtracking Algorithm
-# ============================================================
+
 
 class HamiltonianGraph:
 
@@ -148,9 +146,9 @@ class HamiltonianGraph:
         print(path[0])
 
 
-# ============================================================
+
 # TEST MINIMUM PLATFORM
-# ============================================================
+
 
 arrival = [900, 940, 950, 1100, 1500, 1800]
 departure = [910, 1200, 1120, 1130, 1900, 2000]
@@ -164,9 +162,8 @@ print("Arrival Times   :", arrival)
 print("Departure Times :", departure)
 print("Platforms Needed:", platforms)
 
-# ============================================================
 # TEST HAMILTONIAN CYCLE
-# ============================================================
+
 
 graph = HamiltonianGraph(5)
 
